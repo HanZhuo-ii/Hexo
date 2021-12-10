@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /css
+Disallow: /js
+Disallow: /tags
+Disallow: /categories
+Disallow: /link
+Disallow: /other-media
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: AdsBot-Google
+Disallow:
+
+User-agent: Googlebot-Image
+Disallow:
+
+User-agent: Baiduspider
+Disallow:
