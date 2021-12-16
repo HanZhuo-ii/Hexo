@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>树莓派控制U型光电开关 | 满目皆星河</title><meta name="description" content="树莓派控制U型光电开关"><meta name="keywords" content="Python,Raspberry Pi"><meta name="author" content="满目皆星河🍃"><meta name="copyright" content="满目皆星河🍃"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://myblog.org.cn/2021/12/15/shu-mei-pai-kong-zhi-u-xing-guang-dian-kai-guan/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="preconnect" href="//zz.bdstatic.com"/><meta property="og:type" content="article"><meta property="og:title" content="树莓派控制U型光电开关"><meta property="og:url" content="https://myblog.org.cn/2021/12/15/shu-mei-pai-kong-zhi-u-xing-guang-dian-kai-guan/"><meta property="og:site_name" content="满目皆星河"><meta property="og:description" content="树莓派控制U型光电开关"><meta property="og:image" content="https://cdn.myblog.org.cn/top_img.jpg"><meta property="article:published_time" content="2021-12-15T13:24:10.000Z"><meta property="article:modified_time" content="2021-12-15T13:32:35.384Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5da2607dcb2e0f30c0623e80fd3ad9b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-V4XF07E5NT"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-V4XF07E5NT');
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.4.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '天',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: {"limitCount":1000,"languages":{"author":"作者: 满目皆星河🍃","link":"链接: ","source":"来源: 满目皆星河","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-12-15 21:32:35'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/other-media/css/background.css"><link rel="stylesheet" href="/other-media/css/fontawesome.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="https://cdn.myblog.org.cn/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">28</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 个人简历</span></a></div></div></div></div><div id="body-wrap"><div id="web_bg" data-type="color"></div><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8E%A7%E5%88%B6U%E5%9E%8B%E5%85%89%E7%94%B5%E5%BC%80%E5%85%B3"><span class="toc-number">1.</span> <span class="toc-text">树莓派控制U型光电开关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">正式编程</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://cdn.myblog.org.cn/top_img.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">满目皆星河</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 个人简历</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">树莓派控制U型光电开关</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-15T13:24:10.000Z" title="发表于 2021-12-15 21:24:10">2021-12-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-15T13:32:35.384Z" title="更新于 2021-12-15 21:32:35">2021-12-15</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">860</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="树莓派控制U型光电开关"><a href="#树莓派控制U型光电开关" class="headerlink" title="树莓派控制U型光电开关"></a>树莓派控制U型光电开关</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&emsp;&emsp;U型光电传感器是一种对射式光电传感器，它有一个发射端和接收端组成。它的工作原理是通过对红外发射光的阻断和导通，在红外接收管感应出的电流变化来实现开和关的判断。</p>
+<img src= "/img/loading.gif" data-lazy-src="https://cdn.myblog.org.cn/U型光电开关原理图.png" alt="U型光电开关原理图" style="zoom: 33%;" />
+
+<p>&emsp;&emsp;U型光电传感器由两部分组成：发射器和接收器。发射器发光，然后光线进入接收器，如果发射器和接收器之间的光速被障碍物挡住，接收器即使在一瞬间也将检测不到入射光，并且输出电平将会改变，光线隔断是高电平，没有挡住时是低电平。在这个实验中，我们将通过使用此更改来打开或关闭LED灯。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><div class="note warning"><p>本次编程有两个函数要注意</p>
+</div>
+
+<p><span class="inline-tag yellow"> warning 1 </span></p>
+<p>有多种方式将GPIO的输入导入到程序中，polling(轮询)，interrupt(中断)，edge detection(边缘检测)，“轮询”式如果程序在错误的时间读取值，可能会错过输入。我们这里采用中断式。</p>
+<p>需要定义上拉和下拉电阻</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)</span><br><span class="line">GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)</span><br></pre></td></tr></table></figure>
+
+<p>并不关心电平值，关心电平从低到高，, 为避免主程序忙于其它事情错过引脚的电平改变, 有两种方式:</p>
+<p><span class="inline-tag blue">wait_for_edge()</span></p>
+<p>阻塞程序的执行，直到检测到边缘为止。换句话说，等待按钮按下的示例可以改写成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO.wait_for_edge(channel, GPIO.RISING)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>检测的边缘参数有 GPIO.RISING， GPIO.FALLING ， GPIO.BOTH (上升沿、下降沿、升降沿)</p>
+</blockquote>
+<p><span class="inline-tag blue">event_detected()</span></p>
+<p>用来与其他事物一起在循环中使用， 不同于polling轮询， 它不会产生阻塞，只要检测到指定参数的边缘事件(上升沿, 下降沿 或 升降沿)发生时，调用GPIO.event_detected(channel)的值就为”ture”(真)。通过在add_event_detect()函数中添加callback参数即可执行触发开关后的事件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Note that you can detect events for GPIO.RISING, GPIO.FALLING or GPIO.BOTH.</span></span><br><span class="line">GPIO.add_event_detect(channel, GPIO.RISING)  <span class="comment"># add rising edge detection on a channel</span></span><br><span class="line">do_something()</span><br><span class="line"><span class="keyword">if</span> GPIO.event_detected(channel):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Button pressed&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment">#  如果你想要不止一个回调函数:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_callback_one</span>(<span class="params">channel</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Callback one&#x27;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_callback_two</span>(<span class="params">channel</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Callback two&#x27;</span>)</span><br><span class="line">GPIO.add_event_detect(channel, GPIO.RISING)</span><br><span class="line">GPIO.add_event_callback(channel, my_callback_one)</span><br><span class="line">GPIO.add_event_callback(channel, my_callback_two)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>回调函数是按顺序运行的，而不是并发的。这是因为只有一个线程用于回调，其中每个回调都按照它们被定义的顺序运行。</p>
+</blockquote>
+<p><span class="inline-tag yellow"> warning 2 </span></p>
+<p>由于存在开关抖动(用示波器可以看到)，每次触发开关会调用多次回调函数，这不是我们希望的，有两种方式处理开关抖动：</p>
+<ul>
+<li><p>在开关两个引脚之间添加一个0.1uF的电容</p>
+</li>
+<li><p>软件消抖</p>
+</li>
+</ul>
+<p>这里使用第二种方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># add rising edge detection on a channel, ignoring further edges for 200ms for switch bounce handling</span></span><br><span class="line">GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback, bouncetime=<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="正式编程"><a href="#正式编程" class="headerlink" title="正式编程"></a>正式编程</h3><p>定义针脚参数和初始化设置函数 <code>setup()</code>，添加边缘事件检测函数 <code>GPIO.wait_for_edge()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br><span class="line"></span><br><span class="line">PIPin  = <span class="number">11</span></span><br><span class="line">Rpin   = <span class="number">12</span></span><br><span class="line">Gpin   = <span class="number">13</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setup</span>():</span></span><br><span class="line">    GPIO.setmode(GPIO.BOARD)       <span class="comment"># Numbers GPIOs by physical location</span></span><br><span class="line">    GPIO.setup(Gpin, GPIO.OUT)     <span class="comment"># Set Green Led Pin mode to output</span></span><br><span class="line">    GPIO.setup(Rpin, GPIO.OUT)     <span class="comment"># Set Red Led Pin mode to output</span></span><br><span class="line">    GPIO.setup(PIPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)    <span class="comment"># Set BtnPin&#x27;s mode is input, and pull up to high level(3.3V)</span></span><br><span class="line">    GPIO.add_event_detect(PIPin, GPIO.BOTH, callback=detect, bouncetime=<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">满目皆星河🍃</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://myblog.org.cn/2021/12/15/shu-mei-pai-kong-zhi-u-xing-guang-dian-kai-guan/">https://myblog.org.cn/2021/12/15/shu-mei-pai-kong-zhi-u-xing-guang-dian-kai-guan/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://myblog.org.cn" target="_blank">满目皆星河</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/Raspberry-Pi/">Raspberry Pi</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.myblog.org.cn/top_img.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.myblog.org.cn/wechat.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://cdn.myblog.org.cn/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.myblog.org.cn/alipay.png" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://cdn.myblog.org.cn/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/04/12/hive-shu-ju-cang-ku-da-jian/"><img class="next-cover" data-lazy-src="https://cdn.myblog.org.cn/cover_hive.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hive数据仓库搭建</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/09/30/zhi-hu-yong-hu-xin-xi-pa-chong/" title="知乎用户信息爬虫"><img class="cover" data-lazy-src="https://cdn.myblog.org.cn/cover_知乎用户信息爬虫.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-30</div><div class="title">知乎用户信息爬虫</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 满目皆星河🍃</div><div class="framework-info"><span>Powered by </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>冀ICP备18030899号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    window.valine = new Valine({
+      el: '#vcomment',
+      appId: 'IIqlVKbytYrahRm0BPvdIi8p-gzGzoHsz',
+      appKey: 'h4KNMaMWIvoT1pIoXJE3MAHu',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+    });
+    if ('nick,mail') { valine.config.requiredFields= 'nick,mail'.split(',') }
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script></div></body></html>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://myblog.org.cn/2020/12/27/sqoop-an-zhuang-yu-jian-dan-ying-yong/</loc>
+    <lastmod>2021-12-16</lastmod>
+  </url>
+  <url>
+    <loc>https://myblog.org.cn/2021/12/15/shu-mei-pai-kong-zhi-u-xing-guang-dian-kai-guan/</loc>
+    <lastmod>2021-12-15</lastmod>
+  </url>
+  <url>
     <loc>https://myblog.org.cn/2020/10/07/zhi-hu-pa-chong-ti-wen-xia-suo-you-hui-da/</loc>
     <lastmod>2021-12-11</lastmod>
   </url>
@@ -99,10 +107,6 @@
   <url>
     <loc>https://myblog.org.cn/2021/04/12/hive-shu-ju-cang-ku-da-jian/</loc>
     <lastmod>2021-12-11</lastmod>
-  </url>
-  <url>
-    <loc>https://myblog.org.cn/2020/12/27/sqoop-an-zhuang-yu-jian-dan-ying-yong/</loc>
-    <lastmod>2021-12-10</lastmod>
   </url>
   <url>
     <loc>https://myblog.org.cn/2020/12/27/azkaban-an-zhuang-yu-jian-dan-ying-yong/</loc>

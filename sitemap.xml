@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://myblog.org.cn/2020/12/27/sqoop-an-zhuang-yu-jian-dan-ying-yong/</loc>
+    
+    <lastmod>2021-12-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://myblog.org.cn/2021/12/15/shu-mei-pai-kong-zhi-u-xing-guang-dian-kai-guan/</loc>
+    
+    <lastmod>2021-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://myblog.org.cn/2020/10/07/zhi-hu-pa-chong-ti-wen-xia-suo-you-hui-da/</loc>
     
     <lastmod>2021-12-11</lastmod>
@@ -227,15 +245,6 @@
   </url>
   
   <url>
-    <loc>https://myblog.org.cn/2020/12/27/sqoop-an-zhuang-yu-jian-dan-ying-yong/</loc>
-    
-    <lastmod>2021-12-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://myblog.org.cn/2020/12/27/azkaban-an-zhuang-yu-jian-dan-ying-yong/</loc>
     
     <lastmod>2021-12-10</lastmod>
@@ -283,7 +292,7 @@
 
   <url>
     <loc>https://myblog.org.cn/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -291,63 +300,70 @@
   
   <url>
     <loc>https://myblog.org.cn/tags/Hadoop/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://myblog.org.cn/tags/Flume/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://myblog.org.cn/tags/Linux/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://myblog.org.cn/tags/IDE/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://myblog.org.cn/tags/Nginx/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://myblog.org.cn/tags/Matlab/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://myblog.org.cn/tags/Redis/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://myblog.org.cn/tags/%E7%88%AC%E8%99%AB/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://myblog.org.cn/tags/Python/</loc>
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://myblog.org.cn/tags/Raspberry-Pi/</loc>
+    <lastmod>2021-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
